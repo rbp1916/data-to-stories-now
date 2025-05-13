@@ -21,6 +21,13 @@ const Navbar = () => {
     };
   }, [scrolled]);
 
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header
       className={cn(
@@ -41,15 +48,24 @@ const Navbar = () => {
           <Link to="/" className="text-gray-700 hover:text-storysheets-indigo font-medium transition">
             Home
           </Link>
-          <Link to="#how-it-works" className="text-gray-700 hover:text-storysheets-indigo font-medium transition">
+          <button 
+            onClick={() => scrollToSection('how-it-works')} 
+            className="text-gray-700 hover:text-storysheets-indigo font-medium transition"
+          >
             How it Works
-          </Link>
-          <Link to="#faq" className="text-gray-700 hover:text-storysheets-indigo font-medium transition">
+          </button>
+          <button 
+            onClick={() => scrollToSection('faq')} 
+            className="text-gray-700 hover:text-storysheets-indigo font-medium transition"
+          >
             FAQ
-          </Link>
-          <Link to="#contact" className="text-gray-700 hover:text-storysheets-indigo font-medium transition">
+          </button>
+          <button 
+            onClick={() => scrollToSection('contact')} 
+            className="text-gray-700 hover:text-storysheets-indigo font-medium transition"
+          >
             Contact
-          </Link>
+          </button>
         </nav>
 
         <div className="flex items-center gap-4">
