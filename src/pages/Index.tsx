@@ -5,22 +5,24 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import OnboardingGuide from '@/components/onboarding/OnboardingGuide';
-import { BarChart3, LineChart, PieChart, UploadCloud, MessageSquare } from 'lucide-react';
+import { BarChart3, LineChart, PieChart, UploadCloud, MessageSquare, Sparkles } from 'lucide-react';
 
 const Index = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-premium-gradient">
+    <div className="flex flex-col min-h-screen">
+      {/* Premium background wrapper for the entire page */}
+      <div className="absolute inset-0 premium-hero-bg premium-pattern -z-10 overflow-hidden">
+        {/* Animated floating gradient orbs */}
+        <div className="absolute top-[5%] left-[15%] w-[600px] h-[600px] rounded-full bg-indigo-500/10 blur-[120px] subtle-rotate"></div>
+        <div className="absolute top-[30%] right-[10%] w-[500px] h-[500px] rounded-full bg-blue-400/10 blur-[100px] subtle-rotate" style={{ animationDirection: 'reverse', animationDuration: '25s' }}></div>
+        <div className="absolute bottom-[10%] left-[25%] w-[400px] h-[400px] rounded-full bg-teal-400/10 blur-[80px] subtle-rotate" style={{ animationDuration: '30s' }}></div>
+      </div>
+
       <Navbar />
       <OnboardingGuide />
       
       {/* Hero Section with Premium Background */}
       <section className="pt-32 pb-16 md:pb-24 px-4 relative overflow-hidden">
-        {/* Decorative background elements */}
-        <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute top-[15%] left-[10%] w-64 h-64 rounded-full bg-blue-200 opacity-10 blur-3xl"></div>
-          <div className="absolute top-[30%] right-[5%] w-96 h-96 rounded-full bg-purple-300 opacity-10 blur-3xl"></div>
-        </div>
-        
         <div className="container max-w-5xl mx-auto text-center relative z-10">
           <div className="animate-[soft-reveal_1s_ease-out]">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
@@ -30,17 +32,19 @@ const Index = () => {
               StorySheets transforms your raw data into beautiful visualizations and compelling narratives in seconds.
             </p>
 
-            {/* CTA with glow effect */}
+            {/* CTA with enhanced glow effect */}
             <div className="relative mx-auto w-fit mb-8">
               <div className="absolute inset-0 bg-cta-glow rounded-full pulse-effect"></div>
-              <Button asChild className="gradient-button text-lg px-8 py-6 relative z-10">
-                <Link to="/upload">Upload Your Data ➔</Link>
+              <Button asChild className="gradient-button text-lg px-8 py-6 relative z-10 flex items-center gap-2">
+                <Link to="/upload">
+                  Upload Your Data <Sparkles className="w-5 h-5 ml-1" />
+                </Link>
               </Button>
             </div>
 
             {/* Features Cards with floating effect */}
             <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="card-hover floating-effect" style={{animationDelay: "0s"}}>
+              <Card className="card-hover floating-effect premium-blur" style={{animationDelay: "0s"}}>
                 <CardContent className="p-6 flex flex-col items-center">
                   <div className="w-12 h-12 rounded-full bg-storysheets-indigo/10 flex items-center justify-center mb-4">
                     <UploadCloud className="w-6 h-6 text-storysheets-indigo" />
@@ -52,7 +56,7 @@ const Index = () => {
                 </CardContent>
               </Card>
               
-              <Card className="card-hover floating-effect" style={{animationDelay: "0.3s"}}>
+              <Card className="card-hover floating-effect premium-blur" style={{animationDelay: "0.3s"}}>
                 <CardContent className="p-6 flex flex-col items-center">
                   <div className="w-12 h-12 rounded-full bg-storysheets-teal/10 flex items-center justify-center mb-4">
                     <BarChart3 className="w-6 h-6 text-storysheets-teal" />
@@ -64,7 +68,7 @@ const Index = () => {
                 </CardContent>
               </Card>
               
-              <Card className="card-hover floating-effect" style={{animationDelay: "0.6s"}}>
+              <Card className="card-hover floating-effect premium-blur" style={{animationDelay: "0.6s"}}>
                 <CardContent className="p-6 flex flex-col items-center">
                   <div className="w-12 h-12 rounded-full bg-storysheets-gold/10 flex items-center justify-center mb-4">
                     <MessageSquare className="w-6 h-6 text-storysheets-gold" />
