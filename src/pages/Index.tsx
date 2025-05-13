@@ -4,12 +4,22 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import OnboardingGuide from '@/components/onboarding/OnboardingGuide';
-import { BarChart3, LineChart, PieChart, UploadCloud, MessageSquare, Sparkles, Check, ChevronRight } from 'lucide-react';
+import { BarChart3, LineChart, PieChart, UploadCloud, MessageSquare, Sparkles, Check, ChevronRight, Paperclip, FileCode, Video, Smile, Meh, Frown, Star } from 'lucide-react';
 import FeatureSection from '@/components/features/FeatureSection';
 import TestimonialSection from '@/components/testimonials/TestimonialSection';
 import PricingSection from '@/components/pricing/PricingSection';
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Dialog, DialogTrigger, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { useState } from 'react';
 
 const Index = () => {
+  const [selectedAttachmentType, setSelectedAttachmentType] = useState<string | null>(null);
+  const [sentiment, setSentiment] = useState<string>("neutral");
+  
   return (
     <div className="flex flex-col min-h-screen">
       {/* Premium background wrapper for the entire page */}
@@ -256,44 +266,180 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Contact Section */}
-      <section id="contact" className="py-16 md:py-24 px-4 bg-premium-gradient">
-        <div className="container max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Get in Touch</h2>
+      {/* Contact Section - Enhanced */}
+      <section id="contact" className="py-16 md:py-24 px-4 relative">
+        {/* Enhanced background with gradients */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-50 via-indigo-50/70 to-purple-50/60 z-0">
+          <div className="absolute inset-0 premium-pattern opacity-30"></div>
+        </div>
+        
+        <div className="container max-w-4xl mx-auto text-center relative z-10">
+          <h2 className="text-3xl md:text-4xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-r from-storysheets-indigo to-storysheets-purple">Get in Touch</h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Have questions or feedback? We'd love to hear from you.
           </p>
           
-          <Card className="max-w-md mx-auto premium-card">
-            <CardContent className="p-6">
-              <form className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                    <input 
+          <Card className="max-w-2xl mx-auto premium-card shadow-2xl border border-gray-200/80 backdrop-blur-sm">
+            <CardContent className="p-8">
+              <form className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="name" className="text-sm font-medium text-gray-700">Name</Label>
+                    <Input 
                       type="text" 
                       id="name" 
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:border-storysheets-indigo focus:ring-storysheets-indigo"
+                      placeholder="Your name"
+                      className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-storysheets-indigo/50"
                     />
                   </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                    <input 
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-sm font-medium text-gray-700">Email</Label>
+                    <Input 
                       type="email" 
                       id="email" 
-                      className="w-full rounded-md border-gray-300 shadow-sm focus:border-storysheets-indigo focus:ring-storysheets-indigo"
+                      placeholder="your.email@example.com"
+                      className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-storysheets-indigo/50"
                     />
                   </div>
                 </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                  <textarea 
+                
+                <div className="space-y-2">
+                  <Label htmlFor="message" className="text-sm font-medium text-gray-700">Message</Label>
+                  <Textarea 
                     id="message" 
-                    rows={4} 
-                    className="w-full rounded-md border-gray-300 shadow-sm focus:border-storysheets-indigo focus:ring-storysheets-indigo"
-                  ></textarea>
+                    rows={5} 
+                    placeholder="Share your thoughts, questions, or feedback..."
+                    className="w-full border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-storysheets-indigo/50"
+                  />
                 </div>
-                <Button className="gradient-button w-full">Send Message</Button>
+                
+                <div className="space-y-3">
+                  <Label className="text-sm font-medium text-gray-700">How satisfied are you with StorySheets?</Label>
+                  <div className="flex justify-center items-center gap-8 p-2">
+                    <div className="flex flex-col items-center gap-1">
+                      <button 
+                        type="button"
+                        onClick={() => setSentiment("dissatisfied")}
+                        className={`p-3 rounded-full transition-all ${sentiment === "dissatisfied" ? "bg-red-100 text-red-500 scale-110" : "text-gray-400 hover:text-red-400 hover:bg-red-50"}`}
+                      >
+                        <Frown className="w-8 h-8" />
+                      </button>
+                      <span className="text-xs text-gray-500">Dissatisfied</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-1">
+                      <button 
+                        type="button"
+                        onClick={() => setSentiment("neutral")}
+                        className={`p-3 rounded-full transition-all ${sentiment === "neutral" ? "bg-yellow-100 text-yellow-500 scale-110" : "text-gray-400 hover:text-yellow-400 hover:bg-yellow-50"}`}
+                      >
+                        <Meh className="w-8 h-8" />
+                      </button>
+                      <span className="text-xs text-gray-500">Neutral</span>
+                    </div>
+                    <div className="flex flex-col items-center gap-1">
+                      <button 
+                        type="button"
+                        onClick={() => setSentiment("satisfied")}
+                        className={`p-3 rounded-full transition-all ${sentiment === "satisfied" ? "bg-green-100 text-green-500 scale-110" : "text-gray-400 hover:text-green-400 hover:bg-green-50"}`}
+                      >
+                        <Smile className="w-8 h-8" />
+                      </button>
+                      <span className="text-xs text-gray-500">Satisfied</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="space-y-3 border-t border-gray-100 pt-4">
+                  <Label className="text-sm font-medium text-gray-700">Add an attachment (optional)</Label>
+                  <div className="flex flex-wrap justify-center gap-3 p-2">
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button 
+                          type="button" 
+                          variant="outline" 
+                          onClick={() => setSelectedAttachmentType("file")}
+                          className={`flex gap-2 ${selectedAttachmentType === "file" ? "border-storysheets-indigo/50 bg-blue-50" : ""}`}
+                        >
+                          <Paperclip className="w-4 h-4" />
+                          File
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogTitle>Upload a file</DialogTitle>
+                        <div className="py-4">
+                          <div className="border-2 border-dashed border-gray-300 rounded-lg p-10 text-center cursor-pointer hover:border-storysheets-indigo/70 transition-all">
+                            <Paperclip className="w-10 h-10 text-gray-400 mx-auto mb-3" />
+                            <p className="text-sm text-gray-500">Click to upload or drag and drop</p>
+                            <p className="text-xs text-gray-400 mt-1">Max file size: 10MB</p>
+                            <input type="file" className="hidden" />
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                    
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button 
+                          type="button" 
+                          variant="outline" 
+                          onClick={() => setSelectedAttachmentType("code")}
+                          className={`flex gap-2 ${selectedAttachmentType === "code" ? "border-storysheets-indigo/50 bg-blue-50" : ""}`}
+                        >
+                          <FileCode className="w-4 h-4" />
+                          Code
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogTitle>Add code snippet</DialogTitle>
+                        <div className="py-4">
+                          <Textarea 
+                            placeholder="Paste your code here..." 
+                            className="font-mono text-sm"
+                            rows={10}
+                          />
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                    
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Button 
+                          type="button" 
+                          variant="outline" 
+                          onClick={() => setSelectedAttachmentType("video")}
+                          className={`flex gap-2 ${selectedAttachmentType === "video" ? "border-storysheets-indigo/50 bg-blue-50" : ""}`}
+                        >
+                          <Video className="w-4 h-4" />
+                          Screen recording
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogTitle>Add screen recording</DialogTitle>
+                        <div className="py-4">
+                          <div className="bg-gray-100 rounded-lg p-4 text-center">
+                            <AspectRatio ratio={16/9} className="bg-gray-200 rounded-lg mb-3">
+                              <div className="flex items-center justify-center h-full">
+                                <Video className="w-10 h-10 text-gray-400" />
+                              </div>
+                            </AspectRatio>
+                            <Button className="bg-red-500 hover:bg-red-600">Start Recording</Button>
+                            <p className="text-xs text-gray-500 mt-2">Recording will start in your browser tab</p>
+                          </div>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </div>
+                  {selectedAttachmentType && (
+                    <p className="text-xs text-center text-storysheets-indigo">
+                      Click the button again to edit your {selectedAttachmentType} attachment
+                    </p>
+                  )}
+                </div>
+                
+                <Button className="w-full py-6 rounded-xl gradient-button group transition-all duration-300 hover:shadow-lg hover:shadow-storysheets-indigo/20">
+                  <span className="text-base font-medium">Send Message</span>
+                  <ChevronRight className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" />
+                </Button>
               </form>
             </CardContent>
           </Card>

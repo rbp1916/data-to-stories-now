@@ -206,6 +206,30 @@
   .feature-icon-wrapper {
     @apply w-14 h-14 rounded-xl flex items-center justify-center mb-4;
   }
+  
+  /* Contact Form Enhanced Styles */
+  .contact-form-input {
+    @apply w-full border border-gray-300 rounded-lg px-4 py-3 bg-white/80 backdrop-blur-sm shadow-sm transition-all duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-storysheets-indigo/40 focus:border-storysheets-indigo;
+  }
+  
+  .sentiment-button {
+    @apply p-3 rounded-full transition-all duration-200 text-gray-400 hover:scale-110;
+    @apply hover:bg-blue-50 hover:shadow-sm;
+  }
+  
+  .sentiment-button.active {
+    @apply bg-blue-100 text-storysheets-indigo scale-110 shadow-sm;
+  }
+  
+  .attachment-button {
+    @apply flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-200 shadow-sm bg-white;
+    @apply hover:bg-blue-50 hover:border-storysheets-indigo/50 transition-all duration-200;
+  }
+  
+  .attachment-button.active {
+    @apply bg-blue-50 border-storysheets-indigo text-storysheets-indigo;
+  }
 }
 
 @keyframes float {
