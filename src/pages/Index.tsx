@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/layout/Navbar';
@@ -87,46 +86,125 @@ const Index = () => {
         </div>
       </section>
       
-      {/* How It Works Section */}
-      <section id="how-it-works" className="py-16 md:py-24 bg-white px-4">
-        <div className="container max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">How It Works</h2>
+      {/* How It Works Section - Enhanced with premium styling */}
+      <section id="how-it-works" className="py-16 md:py-28 bg-premium-gradient relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-10 right-[10%] w-60 h-60 bg-storysheets-teal/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 left-[10%] w-80 h-80 bg-storysheets-indigo/5 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="container max-w-6xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <span className="bg-storysheets-indigo/10 text-storysheets-indigo px-4 py-1.5 rounded-full text-sm font-medium inline-block mb-3">
+              Simple 3-Step Process
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-clip-text text-transparent bg-button-gradient">How StorySheets Works</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Transform your raw data into compelling visual stories with our intuitive process.
+            </p>
+          </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 rounded-full bg-storysheets-indigo/10 flex items-center justify-center mb-6">
-                <span className="text-2xl font-bold text-storysheets-indigo">1</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+            {/* Connecting line */}
+            <div className="hidden md:block absolute top-24 left-[25%] right-[25%] h-0.5 bg-gradient-to-r from-storysheets-indigo via-storysheets-purple to-storysheets-teal"></div>
+            
+            {/* Step 1 */}
+            <div className="premium-card relative hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2">
+                <div className="w-24 h-24 rounded-full bg-white shadow-xl flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-storysheets-indigo/10 flex items-center justify-center group-hover:bg-storysheets-indigo/20 transition-all duration-300">
+                    <UploadCloud className="w-8 h-8 text-storysheets-indigo" />
+                  </div>
+                </div>
+                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-storysheets-indigo flex items-center justify-center text-white font-bold">
+                  1
+                </div>
               </div>
-              <h3 className="text-xl font-semibold mb-3">Upload</h3>
-              <p className="text-gray-600">
-                Upload your CSV or Excel file using our simple drag-and-drop interface.
-              </p>
+              <div className="pt-14 text-center px-6">
+                <h3 className="text-2xl font-bold mb-3 text-gray-800">Upload</h3>
+                <p className="text-gray-600 mb-6">
+                  Simply drag and drop your CSV or Excel file using our intuitive interface. No technical expertise required.
+                </p>
+                <div className="pb-6">
+                  <ul className="space-y-2 text-left">
+                    {['CSV files', 'Excel sheets', 'Simple tables'].map((item, i) => (
+                      <li key={i} className="flex items-center">
+                        <Check className="w-5 h-5 text-storysheets-indigo mr-2 shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
             
-            <div className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 rounded-full bg-storysheets-teal/10 flex items-center justify-center mb-6">
-                <span className="text-2xl font-bold text-storysheets-teal">2</span>
+            {/* Step 2 */}
+            <div className="premium-card relative hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2">
+                <div className="w-24 h-24 rounded-full bg-white shadow-xl flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-storysheets-teal/10 flex items-center justify-center group-hover:bg-storysheets-teal/20 transition-all duration-300">
+                    <BarChart3 className="w-8 h-8 text-storysheets-teal" />
+                  </div>
+                </div>
+                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-storysheets-teal flex items-center justify-center text-white font-bold">
+                  2
+                </div>
               </div>
-              <h3 className="text-xl font-semibold mb-3">Visualize</h3>
-              <p className="text-gray-600">
-                StorySheets automatically selects the best chart type for your data.
-              </p>
+              <div className="pt-14 text-center px-6">
+                <h3 className="text-2xl font-bold mb-3 text-gray-800">Visualize</h3>
+                <p className="text-gray-600 mb-6">
+                  Our AI selects the optimal chart type based on your data structure and helps create stunning visualizations.
+                </p>
+                <div className="pb-6">
+                  <ul className="space-y-2 text-left">
+                    {['Smart chart selection', 'Interactive graphs', 'Customizable styles'].map((item, i) => (
+                      <li key={i} className="flex items-center">
+                        <Check className="w-5 h-5 text-storysheets-teal mr-2 shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
             
-            <div className="flex flex-col items-center text-center">
-              <div className="w-16 h-16 rounded-full bg-storysheets-gold/10 flex items-center justify-center mb-6">
-                <span className="text-2xl font-bold text-storysheets-gold">3</span>
+            {/* Step 3 */}
+            <div className="premium-card relative hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+              <div className="absolute -top-12 left-1/2 -translate-x-1/2">
+                <div className="w-24 h-24 rounded-full bg-white shadow-xl flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-full bg-storysheets-gold/10 flex items-center justify-center group-hover:bg-storysheets-gold/20 transition-all duration-300">
+                    <MessageSquare className="w-8 h-8 text-storysheets-gold" />
+                  </div>
+                </div>
+                <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full bg-storysheets-gold flex items-center justify-center text-white font-bold">
+                  3
+                </div>
               </div>
-              <h3 className="text-xl font-semibold mb-3">Generate Story</h3>
-              <p className="text-gray-600">
-                Our AI analyzes your data to generate a concise, insightful narrative.
-              </p>
+              <div className="pt-14 text-center px-6">
+                <h3 className="text-2xl font-bold mb-3 text-gray-800">Generate Story</h3>
+                <p className="text-gray-600 mb-6">
+                  Our AI analyzes trends and patterns in your data to craft compelling narratives that explain key insights.
+                </p>
+                <div className="pb-6">
+                  <ul className="space-y-2 text-left">
+                    {['AI-powered analysis', 'Key insights extraction', 'Professional narratives'].map((item, i) => (
+                      <li key={i} className="flex items-center">
+                        <Check className="w-5 h-5 text-storysheets-gold mr-2 shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
           
-          <div className="mt-12 text-center">
-            <Button asChild className="gradient-button">
-              <Link to="/upload">Try It Now <ChevronRight className="w-4 h-4" /></Link>
+          <div className="mt-20 text-center">
+            <Button asChild size="lg" className="gradient-button py-6 px-8 rounded-xl text-base">
+              <Link to="/upload">
+                Get Started Now <Sparkles className="w-5 h-5 ml-2" />
+              </Link>
             </Button>
           </div>
         </div>
