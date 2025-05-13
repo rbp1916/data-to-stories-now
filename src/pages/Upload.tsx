@@ -33,23 +33,40 @@ const Upload = () => {
   };
   
   return (
-    <div className="flex flex-col min-h-screen bg-hero-gradient">
+    <div className="flex flex-col min-h-screen bg-premium-gradient">
+      <div className="absolute inset-0 premium-hero-bg premium-pattern -z-10 overflow-hidden">
+        <div className="absolute top-[10%] left-[15%] w-[500px] h-[500px] rounded-full bg-indigo-500/10 blur-[100px] subtle-rotate"></div>
+        <div className="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] rounded-full bg-blue-400/10 blur-[80px] subtle-rotate" style={{ animationDuration: '25s' }}></div>
+      </div>
+      
       <Navbar />
       
       <main className="flex-grow container py-24 px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">Upload Your Data</h1>
+          <div className="text-center mb-12 animate-[soft-reveal_1s_ease-out]">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">Transform Your Data into Stories</h1>
             <p className="text-xl text-gray-600">
-              Drag and drop your CSV or Excel file to get started.
+              Upload your CSV or Excel file to get started with AI-powered visualization.
             </p>
           </div>
           
-          {uploadedData.length > 0 ? (
-            <DataPreview data={uploadedData} onProceed={handleProceed} />
-          ) : (
-            <FileUpload onFileProcessed={handleFileProcessed} />
-          )}
+          <div className="premium-card shadow-xl">
+            {uploadedData.length > 0 ? (
+              <DataPreview data={uploadedData} onProceed={handleProceed} />
+            ) : (
+              <FileUpload onFileProcessed={handleFileProcessed} />
+            )}
+          </div>
+          
+          <div className="mt-12 text-center">
+            <p className="text-gray-600 mb-4">Need example data to try it out?</p>
+            <button 
+              onClick={() => {/* Sample data logic would go here */}} 
+              className="text-storysheets-indigo hover:text-storysheets-indigo/80 font-medium"
+            >
+              Use sample dataset →
+            </button>
+          </div>
         </div>
       </main>
       

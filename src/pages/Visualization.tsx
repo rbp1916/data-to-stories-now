@@ -101,21 +101,26 @@ const Visualization = () => {
   };
   
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-premium-gradient">
+      <div className="absolute inset-0 premium-hero-bg premium-pattern -z-10 overflow-hidden">
+        <div className="absolute top-[5%] right-[15%] w-[400px] h-[400px] rounded-full bg-teal-400/10 blur-[90px] subtle-rotate"></div>
+        <div className="absolute bottom-[20%] left-[10%] w-[350px] h-[350px] rounded-full bg-indigo-500/10 blur-[70px] subtle-rotate" style={{ animationDuration: '28s' }}></div>
+      </div>
+      
       <Navbar />
       
       <main className="flex-grow container py-24 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">Data Visualization</h1>
+          <div className="mb-8 animate-[soft-reveal_0.8s_ease-out]">
+            <h1 className="text-3xl font-bold mb-2">Your Data Story</h1>
             <p className="text-gray-600">
-              Customize your chart and generate insights.
+              Fine-tune your visualization and generate AI-powered insights.
             </p>
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2">
-              <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
+              <div className="premium-card mb-6 animate-[soft-reveal_1s_ease-out]">
                 <div className="mb-4">
                   <h2 className="text-xl font-semibold mb-4">Chart Type</h2>
                   <ChartSelector currentType={chartType} onSelectChart={setChartType} />
@@ -135,7 +140,7 @@ const Visualization = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-xl shadow-sm p-6">
+              <div className="premium-card animate-[soft-reveal_1.2s_ease-out]">
                 <h2 className="text-xl font-semibold mb-4">Customize Chart</h2>
                 {data?.rawData && (
                   <ChartCustomizer
@@ -156,25 +161,36 @@ const Visualization = () => {
             
             <div className="space-y-6">
               {data?.rawData && (
-                <NarrativeGenerator
-                  chartType={chartType}
-                  data={data.rawData}
-                  chartTitle={chartTitle}
-                  className="bg-white rounded-xl shadow-sm"
-                />
+                <div className="animate-[soft-reveal_1.4s_ease-out]">
+                  <NarrativeGenerator
+                    chartType={chartType}
+                    data={data.rawData}
+                    chartTitle={chartTitle}
+                    className="premium-card"
+                    onNarrativeGenerated={handleNarrativeGenerated}
+                  />
+                </div>
               )}
               
-              <ExportOptions
-                chartRef={chartRef}
-                narrative={narrative}
-                className="bg-white rounded-xl shadow-sm"
-              />
+              <div className="animate-[soft-reveal_1.6s_ease-out]">
+                <ExportOptions
+                  chartRef={chartRef}
+                  narrative={narrative}
+                  className="premium-card"
+                />
+              </div>
               
-              <div className="bg-white rounded-xl shadow-sm p-6">
-                <h3 className="font-semibold mb-4">Need More Data?</h3>
-                <Button asChild variant="outline" className="w-full">
-                  <a href="/upload">Upload Another File</a>
-                </Button>
+              <div className="premium-card animate-[soft-reveal_1.8s_ease-out]">
+                <h3 className="font-semibold mb-4">Ready for More?</h3>
+                <p className="text-gray-600 mb-4">Upgrade to Pro for advanced chart types, unlimited uploads, and AI-powered deep insights.</p>
+                <div className="flex flex-col space-y-3">
+                  <Button asChild className="gradient-button w-full">
+                    <a href="#pricing">Upgrade to Pro</a>
+                  </Button>
+                  <Button asChild variant="outline" className="w-full">
+                    <a href="/upload">Upload Another File</a>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>

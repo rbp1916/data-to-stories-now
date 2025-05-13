@@ -5,7 +5,10 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import OnboardingGuide from '@/components/onboarding/OnboardingGuide';
-import { BarChart3, LineChart, PieChart, UploadCloud, MessageSquare, Sparkles } from 'lucide-react';
+import { BarChart3, LineChart, PieChart, UploadCloud, MessageSquare, Sparkles, Check, ChevronRight } from 'lucide-react';
+import FeatureSection from '@/components/features/FeatureSection';
+import TestimonialSection from '@/components/testimonials/TestimonialSection';
+import PricingSection from '@/components/pricing/PricingSection';
 
 const Index = () => {
   return (
@@ -123,11 +126,20 @@ const Index = () => {
           
           <div className="mt-12 text-center">
             <Button asChild className="gradient-button">
-              <Link to="/upload">Try It Now ➔</Link>
+              <Link to="/upload">Try It Now <ChevronRight className="w-4 h-4" /></Link>
             </Button>
           </div>
         </div>
       </section>
+      
+      {/* Features Section */}
+      <FeatureSection />
+      
+      {/* Testimonials Section */}
+      <TestimonialSection />
+      
+      {/* Pricing Section */}
+      <PricingSection />
       
       {/* FAQ Section */}
       <section id="faq" className="py-16 md:py-24 px-4 bg-gray-50">
@@ -135,28 +147,28 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Frequently Asked Questions</h2>
           
           <div className="space-y-6">
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="premium-card">
               <h3 className="text-xl font-semibold mb-3">What file types are supported?</h3>
               <p className="text-gray-600">
                 StorySheets currently supports CSV and Excel (.xls, .xlsx) files with a maximum size of 1MB.
               </p>
             </div>
             
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="premium-card">
               <h3 className="text-xl font-semibold mb-3">How does the chart recommendation work?</h3>
               <p className="text-gray-600">
                 Our algorithm analyzes your data structure to recommend the most appropriate chart type. For time series data, we suggest line charts; for category comparisons, bar charts; for parts of a whole, pie charts; and for relationship analysis, scatter plots.
               </p>
             </div>
             
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="premium-card">
               <h3 className="text-xl font-semibold mb-3">Is my data secure?</h3>
               <p className="text-gray-600">
                 Yes, your data is processed in your browser and not stored on our servers. We use secure, client-side processing for all data visualization and narrative generation.
               </p>
             </div>
             
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="premium-card">
               <h3 className="text-xl font-semibold mb-3">How is the narrative generated?</h3>
               <p className="text-gray-600">
                 Our AI analyzes patterns, trends, and notable data points in your visualization to create a concise, informative story that highlights the key insights from your data.
@@ -167,14 +179,14 @@ const Index = () => {
       </section>
       
       {/* Contact Section */}
-      <section id="contact" className="py-16 md:py-24 px-4">
+      <section id="contact" className="py-16 md:py-24 px-4 bg-premium-gradient">
         <div className="container max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Get in Touch</h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Have questions or feedback? We'd love to hear from you.
           </p>
           
-          <Card className="max-w-md mx-auto">
+          <Card className="max-w-md mx-auto premium-card">
             <CardContent className="p-6">
               <form className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
