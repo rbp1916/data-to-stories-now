@@ -14,13 +14,14 @@ const PricingSection = () => {
       price: { monthly: 0, annual: 0 },
       description: 'Perfect for getting started with data visualization.',
       features: [
-        'Upload up to 5 files per month',
+        'Upload up to 3 files per month',
         'Basic chart types (Bar, Pie, Line)',
         'Simple AI-generated insights',
         'Export as PNG'
       ],
       limitations: [
-        'Limited to 1MB file size',
+        'Limited to 500KB file size',
+        'Limited AI processing credits',
         'No custom branding',
         'Community support only'
       ],
@@ -30,38 +31,22 @@ const PricingSection = () => {
     },
     {
       name: 'Pro',
-      price: { monthly: 19, annual: 199 },
+      price: { monthly: 29, annual: 290 },
       description: 'For professionals who need advanced data storytelling.',
       features: [
         'Unlimited file uploads',
         'All chart types including advanced',
-        'Deep AI analysis and narratives',
+        'Full AI analysis and narratives',
+        'Unlimited AI processing credits',
         'Export as PNG, PDF, and PPT',
         'Custom branding',
-        'Priority support',
-        'Collaboration with up to 3 team members'
+        'Priority email support',
+        'API access for your own integrations'
       ],
       ctaText: 'Try Pro Free',
       ctaLink: '/upload',
       featured: true,
-      badge: 'Most Popular'
-    },
-    {
-      name: 'Enterprise',
-      price: { monthly: 49, annual: 499 },
-      description: 'For teams that need advanced features and security.',
-      features: [
-        'Everything in Pro',
-        'Unlimited team members',
-        'Advanced security features',
-        'SSO integration',
-        'Custom chart templates',
-        'API access',
-        'Dedicated account manager'
-      ],
-      ctaText: 'Contact Sales',
-      ctaLink: '#contact',
-      featured: false
+      badge: 'Recommended'
     }
   ];
 
@@ -92,7 +77,7 @@ const PricingSection = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {tiers.map((tier, index) => (
             <div key={index} className={`premium-pricing-card ${tier.featured ? 'featured' : ''}`}>
               {tier.badge && (
@@ -149,10 +134,13 @@ const PricingSection = () => {
         </div>
         
         <div className="mt-16 text-center">
-          <p className="text-gray-600 mb-4">Need a custom solution for your enterprise?</p>
-          <Button asChild variant="outline">
-            <Link to="#contact">Contact Our Sales Team</Link>
-          </Button>
+          <div className="bg-gray-50 p-6 rounded-xl max-w-2xl mx-auto border border-gray-100">
+            <h3 className="text-xl font-semibold mb-3">Need a custom solution?</h3>
+            <p className="text-gray-600 mb-4">Reach out to discuss custom requirements for your specific needs.</p>
+            <Button asChild variant="outline">
+              <Link to="#contact">Contact Me</Link>
+            </Button>
+          </div>
         </div>
       </div>
     </section>
