@@ -11,13 +11,15 @@ interface NarrativeGeneratorProps {
   data: string[][];
   chartTitle: string;
   className?: string;
+  onNarrativeGenerated?: (generatedNarrative: string) => void;
 }
 
 const NarrativeGenerator: React.FC<NarrativeGeneratorProps> = ({ 
   chartType, 
   data, 
   chartTitle,
-  className 
+  className,
+  onNarrativeGenerated 
 }) => {
   const [userContext, setUserContext] = useState('');
   const [narrative, setNarrative] = useState('');
@@ -132,6 +134,11 @@ const NarrativeGenerator: React.FC<NarrativeGeneratorProps> = ({
       
       setNarrative(generatedNarrative);
       setIsGenerating(false);
+      
+      // Call the callback function with the generated narrative if it exists
+      if (onNarrativeGenerated) {
+        onNarrativeGenerated(generatedNarrative);
+      }
     }, 1500); // Simulate delay
   };
 
