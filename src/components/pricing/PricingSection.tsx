@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Check, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -138,7 +137,7 @@ const PricingSection = () => {
             <h3 className="text-xl font-semibold mb-3">Need a custom solution?</h3>
             <p className="text-gray-600 mb-4">Reach out to discuss custom requirements for your specific needs.</p>
             <Button asChild variant="outline">
-              <Link to="#contact">Contact Me</Link>
+              <a href="#contact">Contact Me</a>
             </Button>
           </div>
         </div>
